@@ -1,0 +1,20 @@
+import sys
+from easycolor import ecprint
+
+ecprint('hello')
+ecprint('hello', template='{} blablabla')
+ecprint('hello', template='{} blablabla', c='blue')
+ecprint('hello', template='{} blablabla', c='blue', bg_c='red')
+ecprint('\n'*1, print_args={"end":''}) #print('\n', end='')
+ecprint(['hello', True, 90, 12.234])
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}')
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}', c='yellow')
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}', c=['yellow'])
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}', c=['yellow', None, 'blue', 'red'])
+ecprint('\n'*1, print_args={"end":''})
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}', c='red', bg_c='magenta')
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}', c='red', bg_c=['magenta'])
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}', c='red', bg_c=['magenta', None, 'white', 'green'])
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}', c=['yellow','cyan', 'red', 'green'], bg_c='magenta')
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}', c=['yellow','cyan', 'red', 'green'], bg_c=['magenta', 'red'])
+ecprint(['hello', True, 90, 12.234], template='{} --- {} --- {} --- {}', c=['yellow','cyan', 'red', 'green'], bg_c=['magenta', None, 'blue', 'white'])
