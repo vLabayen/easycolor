@@ -25,34 +25,33 @@ from printer import *
 #print(customprepare('customprepare : 202 - blink - end', color = 202, mode = 'blink'), end = '\n')
 #print(customprepare('customprepare : 39 - inverted+underlined', color = 39, mode = ['inverted', 'underlined']))
 
-ctable(['id', 'username', 'passwd'], [
-	[1, 'vic', '9ad597ad5037333fdf5663fae77b95f3'],
-	[2, 'arangu', '5f4dcc3b5aa765d61d8327deb882cf99'],
-	[3, 'orbegoso', '25f9e794323b453885f5181f1b624d0b'],
-	[4, 'jisus', '6eea9b7ef19179a06954edd0f6c05ceb']
-])
-#ctable(['id', 'username', 'passwd'], [
-#	[1, 'vic', '9ad597ad5037333fdf5663fae77b95f3'],
-#	[2, 'arangu', '5f4dcc3b5aa765d61d8327deb882cf99'],
-#	[3, 'orbegoso', '25f9e794323b453885f5181f1b624d0b'],
-#	[4, 'jisus', '6eea9b7ef19179a06954edd0f6c05ceb']
-#], header_color = 'blue', header_mode = 'bold')
-#ctable(['id', 'username', 'passwd'], [
-#	[1, 'vic', '9ad597ad5037333fdf5663fae77b95f3'],
-#	[2, 'arangu', '5f4dcc3b5aa765d61d8327deb882cf99'],
-#	[3, 'orbegoso', '25f9e794323b453885f5181f1b624d0b'],
-#	[4, 'jisus', '6eea9b7ef19179a06954edd0f6c05ceb']
-#], header_color = 'blue', header_mode = 'bold', rows_color = 'lblue', rows_mode = 'dim')
-#ctable(['id', 'username', 'passwd'], [
-#	[1, 'vic', '9ad597ad5037333fdf5663fae77b95f3'],
-#	[2, 'arangu', '5f4dcc3b5aa765d61d8327deb882cf99'],
-#	[3, 'orbegoso', '25f9e794323b453885f5181f1b624d0b'],
-#	[4, 'jisus', '6eea9b7ef19179a06954edd0f6c05ceb']
-#], header_color = 'blue', header_mode = 'bold', rows_color = 'lblue', rows_mode = 'dim', table_color = 'red', table_mode = 'blink')
+ecprint('ecprint : default')
+ecprint('ecprint : blue', color = 'blue')
+ecprint('ecprint : yellow - bold', color = 'yellow', mode = 'bold')
+ecprint('yellow - blink - template', color = 'yellow', mode = 'blink', template = 'ecprint : {}')
+ecprint('orange', color = 'orange', mode = ['underlined', 'blink'], template = 'ecprint : {}')
+ecprint(['blue', 'blue'], color = 'blue', mode = 'bold', template = 'ecprint : 1:{} 2:{}')
+ecprint(['yellow', 'blue'], color = ['yellow', 'blue'], mode = 'bold', template = 'ecprint : 1:{} 2:{}')
+ecprint(['blink', 'underlined'], color = 'blue', mode = ['blink', 'underlined'], template = 'ecprint : 1:{} 2:{}')
+ecprint(['yellow+blink', 'blue+underlined'], color = ['yellow', 'blue'], mode = ['blink', 'underlined'], template = 'ecprint : 1:{} 2:{}')
+ecprint(['default+inverted+underlined', 'default+bold+underlined'], mode = [['inverted', 'underlined'], ['bold', 'underlined']], template = 'ecprint : 1:{} 2:{}')
+ecprint(['yellow+blink+underlined', 'blue+blink+underlined'], color = ['yellow', 'blue'], mode = [['blink', 'underlined'], ['blink', 'underlined']], template = 'ecprint : 1:{} 2:{}')
 
-ctable(['id', 'username', 'passwd'], [
-	[1, 'vic', '9ad597ad5037333fdf5663fae77b95f3'],
-	[2, 'arangu', '5f4dcc3b5aa765d61d8327deb882cf99'],
-	[3, 'orbegoso', '25f9e794323b453885f5181f1b624d0b'],
-	[4, 'jisus', '6eea9b7ef19179a06954edd0f6c05ceb']
-], side_spacing = 3, horizontal_separator = '~', vertical_separator = '^^')
+print(ecprepare('ecprepare : default'))
+print(ecprepare('ecprepare : blue', color = 'blue'))
+print(ecprepare('ecprepare : yellow - bold', color = 'yellow', mode = 'bold'))
+print(ecprepare('yellow - blink - template', color = 'yellow', mode = 'blink', template = 'ecprepare : {}'))
+print(ecprepare('orange', color = 'orange', mode = ['underlined', 'blink'], template = 'ecprepare : {}'))
+print(ecprepare(['blue', 'blue'], color = 'blue', mode = 'bold', template = 'ecprepare : 1:{} 2:{}'))
+print(ecprepare(['yellow', 'blue'], color = ['yellow', 'blue'], mode = 'bold', template = 'ecprepare : 1:{} 2:{}'))
+print(ecprepare(['blink', 'underlined'], color = 'blue', mode = ['blink', 'underlined'], template = 'ecprepare : 1:{} 2:{}'))
+print(ecprepare(['yellow+blink', 'blue+underlined'], color = ['yellow', 'blue'], mode = ['blink', 'underlined'], template = 'ecprepare : 1:{} 2:{}'))
+print(ecprepare(['default+inverted+underlined', 'default+bold+underlined'], mode = [['inverted', 'underlined'], ['bold', 'underlined']], template = 'ecprepare : 1:{} 2:{}'))
+print(ecprepare(['yellow+blink+underlined', 'blue+blink+underlined'], color = ['yellow', 'blue'], mode = [['blink', 'underlined'], ['blink', 'underlined']], template = 'ecprepare : 1:{} 2:{}'))
+
+#data = [[1, 'vic', '9ad597'],[2, 'arangu', '5f4dcc'],[3, 'orbegoso', '25f9e7'],[4, 'jisus', '6eea9b']]
+#ctable(['id', 'username', 'passwd'], data)
+#ctable(['id', 'username', 'passwd'], data, header_color = 'blue', header_mode = 'bold')
+#ctable(['id', 'username', 'passwd'], data, header_color = 'blue', header_mode = 'bold', rows_color = 'lblue', rows_mode = 'dim')
+#ctable(['id', 'username', 'passwd'], data, header_color = 'blue', header_mode = 'bold', rows_color = 'lblue', rows_mode = 'dim', table_color = 'red', table_mode = 'blink')
+#ctable(['id', 'username', 'passwd'], data, side_spacing = 3, horizontal_separator = '~', vertical_separator = '^^')

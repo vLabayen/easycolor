@@ -66,6 +66,48 @@ def cprint(text, color = 'default', mode='normal', **kargs):
     """
     print(cprepare(text, color, mode), **kargs)
 
+def ecprepare(text, color = 'default', mode='normal', template='{}'):
+    """
+    """
+
+    if not isinstance(text, list):
+        if isinstance(color, list): raise TypeError("Color cannot be an array with non array text")
+        prepared = cprepare(text, color = color, mode = mode)
+        return template.format(prepared)
+
+    else:
+        if not isinstance(color, list) and not isinstance(mode, list):
+            prepared = [cprepare(t, color = color, mode = mode) for t in text]
+
+        elif not isinstance(color, list) and isinstance(mode, list) and not isinstance(mode[0], list):
+            if len(text) != len(mode): raise ValueError("Mode and text must have the same lenght")
+            prepared = [cprepare(t, color = color, mode = mode[i]) for i,t in enumerate(text)]
+
+        elif not isinstance(color, list) and isinstance(mode, list) and isinstance(mode[0], list):
+            if len(text) != len(mode): raise ValueError("First dimension of mode and text must have the same length")
+            prepared = [cprepare(t, color = color, mode = mode[i]) for i,t in enumerate(text)]
+
+        elif isinstance(color, list) and not isinstance(mode, list):
+            if len(text) != len(color): raise ValueError("Color and text must have the same length")
+            prepared = [cprepare(t, color = color[i], mode = mode) for i,t in enumerate(text)]
+
+        elif isinstance(color, list) and isinstance(mode, list) and not isinstance(mode[0], list):
+            if len(color) != len(text) or len(text) != len(mode): raise ValueError("Color, Mode and text must have the same length")
+            prepared = [cprepare(t, color = color[i], mode = mode[i]) for i,t in enumerate(text)]
+
+        else:
+            if len(color) != len(text) or len(text) != len(mode): raise ValueError("Color, first dimension of mode and text must have the same length")
+            prepared = [cprepare(t, color = color[i], mode = mode[i]) for i,t in enumerate(text)]
+
+        if template == '{}': template = ' '.join(['{}'] * len(text))
+        return template.format(*prepared)
+
+def ecprint(text, color = 'default', mode='normal', template='{}', **kargs):
+    """
+    """
+
+    print(ecprepare(text, color = color, mode = mode, template = template), **kargs)
+
 def customprepare(text, color = 'default', mode = 'normal'):
     """
     Accepts any color number from   https://misc.flogisoft.com/_media/bash/colors_format/256_colors_fg.png
